@@ -2,10 +2,10 @@
 function makeGradients() {
     console.log("making gradients");
     var theCanvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
-    console.log(ctx);
-    // var grd = ctx.createLinearGradient(0, window.innerHeight, 0, 0);
-    var grd = ctx.createLinearGradient(0, 0, 0, window.innerHeight/4.5);
+    
+    var ctx = theCanvas.getContext('2d');
+    
+    var grd = ctx.createLinearGradient(0, 0, window.innerWidth/4.5, 0);
     
     // gradient is in roygbiv backwards order
     grd.addColorStop(0, '#e400D3');
@@ -17,15 +17,44 @@ function makeGradients() {
     grd.addColorStop(6/7, '#FF0000');
     grd.addColorStop(1, '#FF0000');
     
-    // grd.addColorStop(0,"black");
-    // grd.addColorStop("0.3","magenta");
-    // grd.addColorStop("0.5","blue");
-    // grd.addColorStop("0.6","green");
-    // grd.addColorStop("0.8","yellow");
-    // grd.addColorStop(1,"red");
-
     ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+
+    // Adding saturation of a sort
+    var sat = ctx.createLinearGradient(0, 0, 0, window.innerHeight/4.5);
+    sat.addColorStop(0, 'rgba(255, 255, 255, 0)');
+    sat.addColorStop(1, 'rgba(255, 255, 255, 1)');
+    ctx.fillStyle = sat;
     ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 }
 
-window.onload = makeGradients;
+function main() {
+    makeGradients();
+    
+    var canvas = document.getElementById("canvas");
+
+    canvas.addEventListener("click",function(event){
+        
+        // Get the coordinates of the click
+        var eventLocation = getEventLocation(this,event);
+        // Get the data of the pixel according to the location generate by the getEventLocation function
+         
+        console.log(eventLocation);
+        
+        var context = this.getContext('2d');
+        var pixelData = context.getImageData(eventLocation.x, eventLocation.y, 1, 1).data; 
+        console.log(pixelData);
+
+        // If transparency on the pixel , array = [0,0,0,0]
+        if((pixelData[0] == 0) && (pixelData[1] == 0) && (pixelData[2] == 0) && (pixelData[3] == 0)){
+            console.log('whu');
+            // Do something if the pixel is transparent
+        }
+
+        // Convert it to HEX if you want using the rgbToHex method.
+        // var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
+    },false);
+}
+
+window.onload = main;
