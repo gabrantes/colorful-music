@@ -43,8 +43,8 @@ function main() {
     canvas.height = screen.height;
     var ctx = canvas.getContext('2d');
 
-    drawMonaLisa(ctx);
-    // makeGradients(ctx);
+    // drawMonaLisa(ctx);
+    makeGradients(ctx);
     
     canvas.addEventListener("mousedown",function(event){
         mySound.play();
