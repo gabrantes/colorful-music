@@ -47,5 +47,5 @@ function stopSound(sound) {
 function hslToSound(myHSL, sound) {
     sound.frequency = freq + (freq * myHSL[0]);
     // sound.attack = myHSL.s*2;
-    sound.volume = myHSL[2];
+    // sound.volume = myHSL[2];
 }
