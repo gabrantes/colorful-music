@@ -37,13 +37,29 @@ function main() {
     
     var canvas = document.getElementById("canvas");
 
-    // canvas.addEventListener("click",function(event){
-    canvas.addEventListener("mousedown",function(event){
-        canvas.addEventListener("mousemove", whenMoves,false);
-    });
-    canvas.addEventListener("mouseup", function() {
-        this.removeEventListener("mousemove", whenMoves);
-    });
+    var context = canvas.getContext('2d');
+    // for(var i = 0; i < 15; i++) {
+    //     for(var j = 0; j < 15; j++) {
+    //         var pixelData = context.getImageData(i, j, 1, 1).data; 
+    //         if((pixelData[0] == 0) && (pixelData[1] == 0) && (pixelData[2] == 0) && (pixelData[3] == 0)){
+    //             // Do something if the pixel is transparent
+    //         } else {
+    //             console.log(pixelData);
+    //         }
+    //     }
+    // }
+    
+    setTimeout(function() {
+        console.log('what');
+        // canvas.addEventListener("click",function(event){
+        canvas.addEventListener("mousedown",function(event){
+            whenMoves.call(this, event);
+            canvas.addEventListener("mousemove", whenMoves,false);
+        });
+        canvas.addEventListener("mouseup", function() {
+            this.removeEventListener("mousemove", whenMoves);
+        });
+    }, 1000);
 }
 
 function whenMoves(event) {
