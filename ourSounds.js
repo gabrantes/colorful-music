@@ -37,15 +37,25 @@ function stopSound(sound) {
     sound.frequency = freq; // resets to original frequency
 }
 
+var effect = new Pizzicato.Effects.Flanger({
+    time: 0.45,
+    speed: 0.2,
+    depth: 0.1,
+    feedback: 0.1,
+    mix: 0.5
+});
+mySound.addEffect(effect);
+
 /**
  * This function alters the sound based on the hsl color input
- * @param h The hue of the input color, corresponds to frequency
- * @param s The saturation of the input color, corresponds to attack speed
- * @param l The lightness of the input color, corresponds to volume
+ * @param myHSL An array containing hue, saturation, lightness respectively
  * @param sound The sound object to be altered
  */
 function hslToSound(myHSL, sound) {
-    sound.frequency = freq + (freq * myHSL[0]);
-    // sound.attack = myHSL.s*2;
+    sound.frequency = freq + (freq * myHSL[0]);    
+    effect.feedback = myHSL[1];
+    effect.speed = myHSL[1];
+    effect.depth = myHSL[1] / 4;
+    console.log("effect.feedback = ", effect.feedback);
     // sound.volume = myHSL[2];
 }
