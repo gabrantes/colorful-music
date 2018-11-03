@@ -1,10 +1,5 @@
-function makeGradients() {
+function makeGradients(ctx) {
     console.log("making gradients");
-    var theCanvas = document.getElementById('canvas');
-    theCanvas.width = screen.width;
-    theCanvas.height = screen.height;
-    
-    var ctx = theCanvas.getContext('2d');
     
     var grd = ctx.createLinearGradient(0, 0, screen.width, 0);
     
@@ -30,12 +25,26 @@ function makeGradients() {
     ctx.fillRect(0, 0, screen.width, screen.height);
 }
 
+function drawMonaLisa(ctx) {
+    console.log('drawing the mona');
+    var mona = new Image();
+    mona.src = "https://tse4.mm.bing.net/th?id=OIP.PtGNX5NmBFu3XUVGSQywZwHaK9&pid=Api&w=730&h=1080&rs=1&p=0";
+    mona.crossOrigin = 'Anonymous';
+    mona.onload = function() {
+        ctx.drawImage(mona, 0, 0);
+    }
+}
+
+
 function main() {
-    makeGradients();
     
     var canvas = document.getElementById("canvas");
+    canvas.width = screen.width;
+    canvas.height = screen.height;
+    var ctx = canvas.getContext('2d');
 
-    var context = canvas.getContext('2d');
+    drawMonaLisa(ctx);
+    // makeGradients(ctx);
     
     canvas.addEventListener("mousedown",function(event){
         mySound.play();
