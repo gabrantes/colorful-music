@@ -1,0 +1,17 @@
+/*Make the <h1> element's color change to blue when hovered over */
+
+h1:hover {
+	color: #ff1a1a; /*this is red*/
+}
+
+/*Make the <a> element's that have been visited gray */
+
+a:visited {
+	color: gray;
+}
+
+
+/* Give the <body> element a background of #bdc3c7*/
+
+body {
+	background: #bdc3c7;
