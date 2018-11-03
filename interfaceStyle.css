@@ -3,15 +3,54 @@
 h1:hover {
 	color: #ff1a1a; /*this is red*/
 }
+h1 {
+
+}
 
 /*Make the <a> element's that have been visited gray */
 
 a:visited {
-	color: gray;
+	color: blue;
 }
 
+h2:hover {
+	color: #ffa600 /*this is orange*/
+}
 
-/* Give the <body> element a background of #bdc3c7*/
+#maindiv {
+	width: 80%;
+	max-width: 1500px;
+	min-width: 400px;
+	border: 10px line black;
+
+}
+
+.bodydiv {
+	width: ;
+
+}
+
+.headerdiv {
+
+}
+
+.option {
+	max-width: 500px;
+	width: 80%;
+	padding-left: 5px;
+	border-left: 5px solid #bdc3c7;
+	color: #3498db;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	border: 5px solid #bdc3c7;
+	margin: 20px;
+	text-align: center;
+}
 
 body {
-	background: #bdc3c7;
+	background: white;
+	color: magenta;
+	/*color: #ffff1a; /*this is yellow*/
+	width: 80%;
+	margin: 10px auto;
+}
