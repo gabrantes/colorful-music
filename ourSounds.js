@@ -4,7 +4,7 @@ var mySound = new Pizzicato.Sound({
     source: 'wave',
     options: {
         type:  'triangle',
-        frequency: freq;
+        frequency: freq,
         release: 0.2
     }
 });
@@ -47,5 +47,5 @@ function stopSound(sound) {
 function hslToSound(myHSL, sound) {
     sound.frequency = freq + (freq * myHSL[0]);
     // sound.attack = myHSL.s*2;
-    sound.volume = myHSL[2];
+    // sound.volume = myHSL[2];
 }
