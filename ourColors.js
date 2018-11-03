@@ -40,12 +40,18 @@ function main() {
     
     canvas.addEventListener("mousedown",function(event){
         mySound.play();
+        effect = new Pizzicato.Effects.Tremolo({
+            speed: 0,
+            depth: 1,
+            mix: 0.8
+        });
+        mySound.addEffect(effect);
         whenMoves.call(this, event);
         canvas.addEventListener("mousemove", whenMoves,false);
     });
     canvas.addEventListener("mouseup", function() {
         mySound.stop();
-        // mySound.removeEffect(effect);
+        mySound.removeEffect(effect);
         this.removeEventListener("mousemove", whenMoves);
     });
 }
@@ -64,12 +70,7 @@ function whenMoves(event) {
     // GABRIEL'S STUFF
     var color = Color.rgb(pixelData[0], pixelData[1], pixelData[2]);
     var hsl = color.hslData();
-    // effect = new Pizzicato.Effects.Tremolo({
-    //     speed:0,
-    //     depth, 1,
-    //     mix, 0.8
-    // });
-    // mySound.addEffect(effect);
+    
     hslToSound(hsl, mySound);
 
     // If transparency on the pixel , array = [0,0,0,0]
