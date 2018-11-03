@@ -52,11 +52,13 @@ mySound.addEffect(effect);
  * @param sound The sound object to be altered
  */
 function hslToSound(myHSL, sound) {
+    console.log("Hue: ", myHSL[0]);
+    console.log("Saturation: ", myHSL[1]);
+    console.log("Lightness: ", myHSL[2]);
     sound.frequency = freq + (freq * myHSL[0]);
     var minEffect = 0.2;    
     effect.feedback = (1 - myHSL[2]) + minEffect;
     effect.speed = (1 - myHSL[2]) + minEffect;
     effect.depth = (1 - myHSL[2] + minEffect) / 4;
-    console.log("effect.feedback = ", effect.feedback);
     // sound.volume = myHSL[2];
 }

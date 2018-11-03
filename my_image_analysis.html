@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery.js"></script>
+    <script src="quantize.js"></script>
+    <script src="color-thief.js"></script>
+    <script src="color.js"></script>
+    <script src="Pizzicato.min.js"></script>
+    <script src="ourSounds.js"></script>
+    <script src="ourColors.js"></script>
+    <script src="ourImages.js"></script>
+</head>
+<body>
+    <input type='file' accept='image/*' onchange='openFile(event)'><br>
+    <script>var newHeight = output.height / 10; var newWidth = output.width / 10;</script>
+    <img id='output' style="height:300px">
+
+    <p style="page-break-after: always;">&nbsp;</p>
+
+    <button onclick="convert(output)">Convert</button>
+
+    <p style="page-break-after: always;">&nbsp;</p>
+
+    <button onclick="playAll()">Start</button>
+    <button onclick="stopAll()">Stop</button>
+</body>
+</html>
