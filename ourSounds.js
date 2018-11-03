@@ -1,7 +1,7 @@
 var mySound = new Pizzicato.Sound({
 	source: 'wave',
 	options: {
-		type:  'striangle',
+		type:  'triangle',
 		frequency: 440, // A
 		release: 0.2
 	}
@@ -9,6 +9,7 @@ var mySound = new Pizzicato.Sound({
 
 /**
  * This function transposes a sound up by a minor third
+ *
  * @param sound The sound object to be transposed
  */
 function incrementSound(sound) {
@@ -17,6 +18,7 @@ function incrementSound(sound) {
 
 /**
  * This function transposes a sound down by a minor third
+ *
  * @param sound The sound object to be transposed
  */
 function decrementSound(sound) {
@@ -25,6 +27,7 @@ function decrementSound(sound) {
 
 /**
  * This function stops a sound, and resets it to 440Hz
+ *
  * @param sound The sound object to be stopped
  */
 function stopSound(sound) {
