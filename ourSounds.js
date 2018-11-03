@@ -53,7 +53,7 @@ mySound.addEffect(effect);
  */
 function hslToSound(myHSL, sound) {
     sound.frequency = freq + (freq * myHSL[0]);
-    var minEffect = 0.4    
+    var minEffect = 0.2;    
     effect.feedback = (1 - myHSL[2]) + minEffect;
     effect.speed = (1 - myHSL[2]) + minEffect;
     effect.depth = (1 - myHSL[2] + minEffect) / 4;
