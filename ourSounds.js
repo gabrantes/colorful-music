@@ -3,9 +3,6 @@ var mySound = new Pizzicato.Sound({
 	options: {
 		type:  'square',
 		frequency: 440,
-		release: 0.5
+		release: 0.2
 	}
 });
-
-mySound.play();
-setTimeout(mySound.stop(), 1000);
