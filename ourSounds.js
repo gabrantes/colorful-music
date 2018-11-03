@@ -34,3 +34,16 @@ function stopSound(sound) {
     sound.stop();
     sound.frequency = 440; // resets to original frequency
 }
+
+/**
+ * This function alters the sound based on the hsl color input
+ * @param h The hue of the input color, corresponds to frequency
+ * @param s The saturation of the input color, corresponds to attack speed
+ * @param l The lightness of the input color, corresponds to volume
+ * @param sound The sound object to be altered
+ */
+function hslToSound(h, s, l, sound) {
+    sound.frequency = (h/360)*4158.51 + 27.5;
+    sound.attack = s/50;
+    sound.volume = l/100;
+}
