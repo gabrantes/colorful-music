@@ -4,7 +4,7 @@ var mySound = new Pizzicato.Sound({
     source: 'wave',
     options: {
         type:  'triangle',
-        frequency: freq;
+        frequency: freq,
         release: 0.2
     }
 });
