@@ -2,11 +2,12 @@
 function makeGradients() {
     console.log("making gradients");
     var theCanvas = document.getElementById('canvas');
+    theCanvas.width = screen.width;
+    theCanvas.height = screen.height;
     
     var ctx = theCanvas.getContext('2d');
     
-    var grd = ctx.createLinearGradient(0, 0, window.innerWidth/4.5, 0);
-    // var grd = ctx.createLinearGradient(0, 0, window.innerWidth, 0);
+    var grd = ctx.createLinearGradient(0, 0, screen.width, 0);
     
     // gradient is in roygbiv backwards order
     grd.addColorStop(0, '#e400D3');
@@ -19,17 +20,15 @@ function makeGradients() {
     grd.addColorStop(1, '#FF0000');
     
     ctx.fillStyle = grd;
-    // ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-    ctx.fillRect(0, 0, window.innerWidth/4.5, window.innerHeight/4.5);
+    ctx.fillRect(0, 0, screen.width, screen.height);
 
 
     // Adding saturation of a sort
-    var sat = ctx.createLinearGradient(0, 0, 0, window.innerHeight/4.5);
-    // var sat = ctx.createLinearGradient(0, 0, 0, window.innerHeight);
+    var sat = ctx.createLinearGradient(0, 0, 0, screen.height);
     sat.addColorStop(0, 'rgba(255, 255, 255, 0)');
     sat.addColorStop(1, 'rgba(255, 255, 255, 1)');
     ctx.fillStyle = sat;
-    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    ctx.fillRect(0, 0, screen.width, screen.height);
 }
 
 function main() {
@@ -38,28 +37,16 @@ function main() {
     var canvas = document.getElementById("canvas");
 
     var context = canvas.getContext('2d');
-    // for(var i = 0; i < 15; i++) {
-    //     for(var j = 0; j < 15; j++) {
-    //         var pixelData = context.getImageData(i, j, 1, 1).data; 
-    //         if((pixelData[0] == 0) && (pixelData[1] == 0) && (pixelData[2] == 0) && (pixelData[3] == 0)){
-    //             // Do something if the pixel is transparent
-    //         } else {
-    //             console.log(pixelData);
-    //         }
-    //     }
-    // }
     
-    setTimeout(function() {
-        console.log('what');
-        // canvas.addEventListener("click",function(event){
-        canvas.addEventListener("mousedown",function(event){
-            whenMoves.call(this, event);
-            canvas.addEventListener("mousemove", whenMoves,false);
-        });
-        canvas.addEventListener("mouseup", function() {
-            this.removeEventListener("mousemove", whenMoves);
-        });
-    }, 1000);
+    canvas.addEventListener("mousedown",function(event){
+        mySound.play();
+        whenMoves.call(this, event);
+        canvas.addEventListener("mousemove", whenMoves,false);
+    });
+    canvas.addEventListener("mouseup", function() {
+        mySound.stop();
+        this.removeEventListener("mousemove", whenMoves);
+    });
 }
 
 function whenMoves(event) {
