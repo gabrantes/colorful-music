@@ -10,7 +10,7 @@ var mySound = new Pizzicato.Sound({
 });
 
 /**
- * This function transposes a sound up by a minor third
+ * This function transposes a sound UP by a minor third
  *
  * @param sound The sound object to be transposed
  */
@@ -19,7 +19,7 @@ function incrementSound(sound) {
 }
 
 /**
- * This function transposes a sound down by a minor third
+ * This function transposes a sound DOWN by a minor third
  *
  * @param sound The sound object to be transposed
  */
@@ -28,7 +28,7 @@ function decrementSound(sound) {
 }
 
 /**
- * This function stops a sound, and resets it to 440Hz
+ * This function stops a sound, and resets it to the original frequency
  *
  * @param sound The sound object to be stopped
  */
@@ -48,14 +48,20 @@ mySound.addEffect(effect);
 
 /**
  * This function alters the sound based on the hsl color input
- * @param myHSL An array containing hue, saturation, lightness respectively
+ *
+ * @param myHSL An array containing hue, saturation, lightness respectively. 
+ *              Each of these values must range from 0 to 1
  * @param sound The sound object to be altered
  */
 function hslToSound(myHSL, sound) {
     console.log("Hue: ", myHSL[0]);
     console.log("Saturation: ", myHSL[1]);
     console.log("Lightness: ", myHSL[2]);
+
+    // modifying the frequency using saturation
     sound.frequency = freq + (freq * myHSL[0]);
+
+    // modifying the effects using lightness
     var minEffect = 0.2;    
     effect.feedback = (1 - myHSL[2]) + minEffect;
     effect.speed = (1 - myHSL[2]) + minEffect;

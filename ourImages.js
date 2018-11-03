@@ -25,6 +25,9 @@ var sound3 = new Pizzicato.Sound({
     }
 });
 
+/**
+ *  Opens a file and saves the element into a variable called output
+ */
 var openFile = function(file) {
   var input = file.target;
 
@@ -37,19 +40,21 @@ var openFile = function(file) {
   reader.readAsDataURL(input.files[0]);
 };
 
-function hslFromPalette(palette, sound) {
+/**
+ * Given an RGB palette, it modifies the sound object parameter using on our function hslToSound
+ */
+function convertFromPalette(palette, sound) {
   var color = Color.rgb(palette[0], palette[1], palette[2]);
   var hsl = color.hslData();
   hslToSound(hsl, sound);
 }
 
-function convert(src) {
-  var palette = paletteImg(src);
-  hslFromPalette(palette[0], sound1);
-  hslFromPalette(palette[1], sound2);
-  hslFromPalette(palette[2], sound3);
-}
-
+/**
+ * Converts an image file into a palette of its three most dominant colors
+ * Notice it is returning in RGB format, NOT HSL.
+ *
+ * @return An array of the three colors, in RGB format: [ {r, g, b}, {r, g, b}, {r, g, b} ]
+ */
 function paletteImg(src) {
   var colorThief = new ColorThief();
   var palette = colorThief.getPalette(src, 3);
@@ -57,12 +62,30 @@ function paletteImg(src) {
   return palette;
 }
 
+/**
+ * Converts an image file into three sounds
+ */
+function convert(src) {
+  var palette = paletteImg(src); // palette is an array of 3 RGB colors
+
+  // modifying our three sounds using the 3 RGB colors in the palette array
+  convertFromPalette(palette[0], sound1);
+  convertFromPalette(palette[1], sound2);
+  convertFromPalette(palette[2], sound3);
+}
+
+/**
+ * Plays our three sounds
+ */
 function playAll() {
   sound1.play();
   sound2.play();
   sound3.play();
 }
 
+/**
+ * Stops our three sounds
+ */
 function stopAll() {
   sound1.stop();
   sound2.stop();
