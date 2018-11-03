@@ -64,12 +64,8 @@ function whenMoves(event) {
     // GABRIEL'S STUFF
     var color = Color.rgb(pixelData[0], pixelData[1], pixelData[2]);
     var hsl = color.hslData();
-    // effect = new Pizzicato.Effects.Tremolo({
-    //     speed:0,
-    //     depth, 1,
-    //     mix, 0.8
-    // });
-    // mySound.addEffect(effect);
+
+    //mySound.addEffect(distortion);
     hslToSound(hsl, mySound);
 
     // If transparency on the pixel , array = [0,0,0,0]
