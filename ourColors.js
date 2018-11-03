@@ -45,7 +45,15 @@ function main() {
 
     // drawMonaLisa(ctx);
     makeGradients(ctx);
-    
+    canvas.addEventListener("touchstart", function(event){
+        mySound.play();
+        whenMoves.call(this, event);
+        canvas.addEventListener("touchmove", whenMoves, false);
+    });
+    canvas.addEventListener("touchend", function() {
+        mySound.stop();
+        this.removeEventListener("touchmove", whenMoves);
+    });
     canvas.addEventListener("mousedown",function(event){
         mySound.play();
         whenMoves.call(this, event);
