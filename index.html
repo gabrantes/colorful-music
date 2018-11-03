@@ -6,8 +6,10 @@
     <script src="ourSounds.js"></script>
 </head>
 <body>
-	<button onclick="setTimeout(mySound.play(), 3000)">Try it</button>
-	<button onclick="setTimeout(mySound.stop(), 3000)">Stop it</button>
+	<button onclick="mySound.play()">start</button>
+	<button onclick="incrementSound(mySound)">up m3</button>
+	<button onclick="decrementSound(mySound)">down m3</button>
+	<button onclick="mySound.stop()">stop</button>
     <h1>hello world haha</h1>
 
 </body>
