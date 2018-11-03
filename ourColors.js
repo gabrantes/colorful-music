@@ -73,6 +73,11 @@ function whenMoves(event) {
     var pixelData = context.getImageData(eventLocation.x, eventLocation.y, 1, 1).data; 
     console.log(pixelData);
 
+    // GABRIEL'S STUFF
+    var color = Color.rgb(pixelData[0], pixelData[1], pixelData[2]);
+    var hsl = color.hslData();
+    hslToSound(hsl, mySound);
+
     // If transparency on the pixel , array = [0,0,0,0]
     if((pixelData[0] == 0) && (pixelData[1] == 0) && (pixelData[2] == 0) && (pixelData[3] == 0)){
         console.log('whu');
