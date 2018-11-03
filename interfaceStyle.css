@@ -1,20 +1,53 @@
-/*Make the <h1> element's color change to blue when hovered over */
-
 h1:hover {
 	color: #ff1a1a; /*this is red*/
 }
+
 h1 {
-
-}
-
-/*Make the <a> element's that have been visited gray */
-
-a:visited {
-	color: blue;
+	font-size: 48px;
 }
 
 h2:hover {
+	color: #e01fe0; /*this is violet*/
+}
+
+h2 {
+	font-size: 36px;
+}
+
+a:visited {
+	color: purple;
+}
+
+.firstinst:hover {
 	color: #ffa600 /*this is orange*/
+}
+
+.secondinst:hover {
+	color: #ffff1a; /*this is yellow*/
+}
+
+.thirdinst:hover {
+	color: #00ff00; /*this is green*/
+}
+
+.fourthinst:hover {
+	color: #1a1aff; /*this is blue*/
+}
+
+.fifthinst:hover {
+	color: #7700cc; /*this is indigo*/
+}
+
+.button {
+	background-color: #f44336;
+	font-size: 18px;
+	padding: 16px;
+	border-radius: 8px;
+	border: 2px solid black;
+}
+
+.button:hover {
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 #maindiv {
@@ -22,7 +55,9 @@ h2:hover {
 	max-width: 1500px;
 	min-width: 400px;
 	border: 10px line black;
-
+	min-height: 500px;
+	height: 80%;
+	text-align: center;
 }
 
 .bodydiv {
@@ -35,8 +70,10 @@ h2:hover {
 }
 
 .option {
-	max-width: 500px;
+	max-width: 800px;
 	width: 80%;
+	max-height: 800px;
+	height: 80%;
 	padding-left: 5px;
 	border-left: 5px solid #bdc3c7;
 	color: #3498db;
@@ -50,7 +87,7 @@ h2:hover {
 body {
 	background: white;
 	color: black;
-	/*color: #ffff1a; /*this is yellow*/
 	width: 80%;
 	margin: 10px auto;
+
 }
