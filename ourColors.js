@@ -34,7 +34,10 @@ function main() {
     
     var canvas = document.getElementById("canvas");
 
-    canvas.addEventListener("click",function(event){
+    // canvas.addEventListener("click",function(event){
+    canvas.addEventListener("mousedown",function(event){
+    canvas.addEventListener("mousemove",function(event){
+
         
         // Get the coordinates of the click
         var eventLocation = getEventLocation(this,event);
@@ -55,6 +58,7 @@ function main() {
         // Convert it to HEX if you want using the rgbToHex method.
         // var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
     },false);
+    });
 }
 
 window.onload = main;
