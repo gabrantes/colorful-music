@@ -57,10 +57,12 @@ mySound.addEffect(effect);
 function logx(base, arg) {
     return Math.log(arg)/Math.log(base);
 }
+
 /**
- * This function alters the sound based on the hsl color input
+ * This function alters the sound based on the hsl color input, ensuring the resulting
+ * sounds are diatonic.
  *
- * @param myHSL An array containing hue, saturation, lightness respectively.
+ * @param myHSL An array containing hue, saturation, lightness respectively. [hue, saturation, lightness]
  *              Each of these values must range from 0 to 1
  * @param sound The sound object to be altered
  */
@@ -75,12 +77,13 @@ function hslToSound(myHSL, sound) {
     console.log("dichord: " + dichord);
     if (dichord == 1 || dichord == 3 || dichord == 6 || dichord == 8 || dichord == 10) {
         sound.frequency = pitch * ratio; //Adjust all dichords to ionian mode
-
     }
     else {
-
         sound.frequency = pitch;
     }
+
+    // adding dichord property to the sound object
+    sound.dichord = Math.floor((logx(ratio, pitch/freq) + 12)% 12);
 
     // modifying the effects using lightness
     var minEffect = 0.2;
@@ -89,8 +92,32 @@ function hslToSound(myHSL, sound) {
     effect.depth = (1 - myHSL[2] + minEffect) / 4;
     sound.volume = -2*myHSL[2] + 2;
     sound.mix = myHSL[1];
-
-
 }
 
+/**
+ * This function alters the sound based on the hsl color input, ensuring that
+ * all sounds are harmonically acceptable.
+ *
+ * @param myHSL An array containing hue, saturation, lightness respectively. [hue, saturation, lightness]
+ *              Each of these values must range from 0 to 1
+ * @param soundArr The array of the two (diatonic) sounds after they've been passed through the function
+ *                 hslToSound, of format [sound1 , sound2]
+ */
+function hslToSound_harmonic(myHSL, soundArr) {
+    console.log("Hue: ", myHSL[0]);
+    console.log("Saturation: ", myHSL[1]);
+    console.log("Lightness: ", myHSL[2]);
 
+    // find the bass (the min)
+    if (soundArr[0].frequency > soundArr[1].frequency) {
+        var tmp = soundArr[0];
+        soundArr[0] = soundArr[1];
+        soundArr[1] = soundArr[0];
+    } // now array is in order
+
+    // determine the 3rd note
+    switch(soundArr[0].dichord) {
+
+    }
+
+}
