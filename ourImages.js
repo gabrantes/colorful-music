@@ -1,7 +1,7 @@
 var isConverted = false;
 var isFileOpened = false;
 
-var zeroDichord = [4, 5, 7, 9];
+var zeroDichord = [4, 5, 7, 9]; //Set of arrays containing possible dichord numbers for sound2 based on the dichord numbers of sound1
 var twoDichord = [5, 7, 9, 11];
 var fourDichord = [7, 9, 11];
 var fiveDichord = [9, 0, 11];
@@ -9,7 +9,7 @@ var sevenDichord = [11, 0, 2, 4];
 var nineDichord = [0, 2, 4, 5, 7];
 var elevenDichord = [2, 4, 7];
 
-var sound1 = new Pizzicato.Sound({
+var sound1 = new Pizzicato.Sound({ //declare sound1
     source: 'wave',
     options: {
         type:  'triangle',
@@ -18,7 +18,7 @@ var sound1 = new Pizzicato.Sound({
     }
 });
 
-var sound2 = new Pizzicato.Sound({
+var sound2 = new Pizzicato.Sound({ //declare sound2
     source: 'wave',
     options: {
         type:  'triangle',
@@ -27,7 +27,7 @@ var sound2 = new Pizzicato.Sound({
     }
 });
 
-var sound3 = new Pizzicato.Sound({
+var sound3 = new Pizzicato.Sound({ //declare sound3
     source: 'wave',
     options: {
       type: 'triangle',
@@ -37,19 +37,36 @@ var sound3 = new Pizzicato.Sound({
 });
 
 /**
- * Converts a dichord to a frequency
+ * Converts a dichord to a frequency in just intonation
  *
  * @param dichord
  * @return The frequency equivalent of the given dichord
  */
 function dichordToFreq(dichord) {
-  return 440 * (1.05946 ** dichord);
+    if (dichord == 2) {
+        return 440 * 9/8;
+    }
+    else if (dichord == 4) {
+        return 440 * 5/4;
+    }
+    else if (dichord == 5) {
+        return 440 * 4/3;
+    }
+    else if (dichord == 7) {
+        return 440 * 3/2;
+    }
+    else if (dichord == 9) {
+        return 440 * 5/3;
+    }
+    else if (dichord == 11) {
+        return 440 * 15/8;
+    }
 }
 
 
 var soundArray = [];
 
-function setDichords(a, b) {
+function setDichords(a, b) { //set dichords for 2nd and 3rd sounds based on dichord values of 1st and 2nd sounds
         var tmp = a;
         sound3.dichord = b;
         console.log("in setDichords(), sound3.dichord = ", sound3.dichord);
@@ -196,12 +213,19 @@ function hslToSound_harmonic(soundArr) {
     sound3.frequency = dichordToFreq(sound3.dichord);
     soundArray.push(sound3);
 
-    for (var i = 0; i < 3; ++i) {
+    for (var i = 0; i < 3; ++i) { //remove all sound effects (used in playing with color)
       soundArray[i].removeEffect(effect);
     }
 
 }
 
+/**
+ * Adjusts sound2 to more harmonically fit with sound1 in the context of A ionion mode
+ * @param dichord
+ * @param arrDichords
+ * @param arrSize
+ * @returns {*}
+ */
 function findNearestVal(dichord, arrDichords, arrSize) {
     console.log("findNearestVal(", dichord, ")");
     var diffArr = [];

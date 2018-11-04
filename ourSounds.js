@@ -73,7 +73,7 @@ function hslToSound(myHSL, sound) {
     console.log("Lightness: ", myHSL[2]);
 
     // modifying the frequency using hue
-    var pitch = freq * ratio ** Math.floor(((myHSL[0])*20) / 1);
+    var pitch = freq * ratio ** Math.floor(((myHSL[0])*20) / 1); //Consolidate pitches into discrete notes in diatonic scale with limited pitch range
     var dichord = Math.floor((logx(ratio, pitch/freq) + 12)% 12); //Assign each pitch a dichord number  
     sound.dichord = dichord;  
     if (dichord == 1 || dichord == 3 || dichord == 6 || dichord == 8 || dichord == 10) {

@@ -1,3 +1,7 @@
+/**
+ * Create the gradient on which to "play with colors"
+ * @param ctx
+ */
 function makeGradients(ctx) {
     console.log("making gradients");
     
@@ -65,6 +69,10 @@ function main() {
     });
 }
 
+/**
+ * Operate on data of the pixel under mouse click
+ * @param event
+ */
 function whenMovesMouse(event) {
     // Get the coordinates of the click
     var eventLocation = getEventLocation(this,event);
@@ -92,6 +100,10 @@ function whenMovesMouse(event) {
     // var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
 }
 
+/**
+ * Same as above, except for touchscreens
+ * @param event
+ */
 function whenMovesTouch(event) {
     // Get the coordinates of the click
     var xCoordinate = event.touches[0].clientX;
