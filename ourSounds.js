@@ -74,17 +74,16 @@ function hslToSound(myHSL, sound) {
 
     // modifying the frequency using hue
     var pitch = freq * ratio ** Math.floor(((myHSL[0])*20) / 1);
-    var dichord = Math.floor((logx(ratio, pitch/freq) + 12)% 12); //Assign each pitch a dichord number
-    console.log("dichord: " + dichord);
+    var dichord = Math.floor((logx(ratio, pitch/freq) + 12)% 12); //Assign each pitch a dichord number  
+    sound.dichord = dichord;  
     if (dichord == 1 || dichord == 3 || dichord == 6 || dichord == 8 || dichord == 10) {
         sound.frequency = pitch * ratio; //Adjust all dichords to ionian mode
+        sound.dichord += 1;
     }
     else {
         sound.frequency = pitch;
     }
-
-    // adding dichord property to the sound object
-    sound.dichord = Math.floor((logx(ratio, pitch/freq) + 12)% 12);
+    console.log("sound.dichord = ", sound.dichord);
 
     // modifying the effects using lightness
     var minEffect = 0.2;
