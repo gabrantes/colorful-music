@@ -36,8 +36,6 @@ var sound3 = new Pizzicato.Sound({
     }
 });
 
-var soundArray = [sound1, sound2];
-
 /**
  * Converts a dichord to a frequency
  *
@@ -46,6 +44,15 @@ var soundArray = [sound1, sound2];
  */
 function dichordToFreq(dichord) {
   return 440 * (1.05946 ** dichord);
+}
+
+
+var soundArray = [sound1, sound2];
+
+function setDichords(a, b) {
+        soundArr[1].dichord = a;
+        sound3.dichord = b;
+        console.log("in setDichords(), sound3.dichord = ", sound3.dichord);
 }
 
 /**
@@ -57,10 +64,7 @@ function dichordToFreq(dichord) {
  * @param soundArr The array of the two (diatonic) sounds after they've been passed through the function
  *                 hslToSound, of format [sound1 , sound2]
  */
-function hslToSound_harmonic(myHSL, soundArr) {
-    console.log("Hue: ", myHSL[0]);
-    console.log("Saturation: ", myHSL[1]);
-    console.log("Lightness: ", myHSL[2]);
+function hslToSound_harmonic(soundArr) {
 
     // find the bass (the min)
     if (soundArr[0].frequency > soundArr[1].frequency) {
@@ -70,17 +74,117 @@ function hslToSound_harmonic(myHSL, soundArr) {
     } // now array is in order
 
     // determine the 3rd note
-
     switch(soundArr[0].dichord) {
         case 0:
-            switch(findNearestVal(0, zeroDichord, zeroDichord.length)({
-                case 4:
-                soundArr[1] = 4;
+          console.log("case 0");
+          switch(findNearestVal(0, zeroDichord, zeroDichord.length)){
+              case 4:
+                  setDichords(4, 7);
+                  break;
+              case 5:
+                  setDichords(5, 8);
+                  break;
+              case 7:
+                  setDichords(7, 0);
+                  break;
+              case 9:
+                  setDichords(9, 5);
+              break;
+          };
+        case 2:
+          console.log("case 2");
+          switch(findNearestVal(0, zeroDichord, zeroDichord.length)) {
+              case 5:
+                  setDichords(5, 9);
+                  break;
+              case 7:
+                  setDichords(7, 11);
+                  break;
+              case 9:
+                  setDichords(9, 5);
+                  break;
+              case 11:
+                  setDichords(11, 7);
+                  break;
+          };
+        case 4:
+          console.log("case 4");
+          switch(findNearestVal(0, zeroDichord, zeroDichord.length)) {
+              case 7:
+                  setDichords(7, 0);
+                  break;
+              case 9:
+                  setDichords(9, 0);
+                  break;
+              case 11:
+                  setDichords(11, 7);
+                  break;
+          };
+        case 5:
+            console.log("case 5");
+            switch(findNearestVal(0, zeroDichord, zeroDichord.length)) {
+                case 9:
+                    setDichords(9, 0);
+                    break;
+                case 0:
+                    setDichords(0, 9);
+                break;
+            };
+        case 7:
+          console.log("case 7");
+          switch(findNearestVal(0, zeroDichord, zeroDichord.length)) {
+              case 11:
+                  setDichords(11, 2);
+                  break;
+              case 0:
+                  setDichords(0, 4);
+              case 2:
+                  setDichords(2, 11);
+              case 4:
+                  setDichords(4, 0);
+              break;
+          };
+        case 9:
+          console.log("case 9");
+          switch(findNearestVal(0, zeroDichord, zeroDichord.length)) {
+              case 0:
+                  setDichords(0, 5);
+                  break;
+              case 2:
+                  setDichords(2, 5);
+                  break;
+              case 4:
+                  setDichords(4, 0);
+                  break;
+              case 5:
+                  setDichords(5, 2);
+                  break;
+              case 7:
+                  setDichords(7, 4);
+              break;
+          };
+        case 11:
+          console.log("case 11");
+          switch(findNearestVal(0, zeroDichord, zeroDichord.length)){
+              case 2:
+                  setDichords(2, 7);
+                  break;
+              case 4:
+                  setDichords(4, 7);
+                  break;
+              case 7:
+                  setDichords(7, 2);
+              break;
+          }
+    }
 
-    })
+    console.log("sound3.dichord = ", sound3.dichord);
+    sound3.frequency = dichordToFreq(sound3.dichord);
+    soundArray.push(sound3);
 
-
-}
+    for (var i = 0; i < 3; ++i) {
+      soundArray[i].removeEffect(effect);
+    }
 
 }
 
@@ -152,10 +256,8 @@ function convert(src) {
     convertFromPalette(palette[0], sound1);
     convertFromPalette(palette[1], sound2);
 
-    // determine the third sound
-
-    // add the third sound to the soundArray
-    soundArray.push(/* the third sound */); // soundArray now contains 3 sounds
+    // add the third sound
+    hslToSound_harmonic(soundArray);
 
     return palette;
   }
@@ -167,8 +269,10 @@ function convert(src) {
  */
 function playAll() {
   if (isConverted && isFileOpened) {
+    console.log("playAll()");
     for (var i = 0; i < 3; ++i) {
-      soundArray[i].play();
+      soundArray[i].play((i/2) + 0.5);
+      console.log(soundArray[i].dichord);
     }
   }
 }
@@ -178,7 +282,7 @@ function playAll() {
  */
 function stopAll() {
   for (var i = 0; i < 3; ++i) {
-    soundArray[i].stop();
+    soundArray[i].stop();    
   }
 }
 
