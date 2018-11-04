@@ -61,7 +61,8 @@ function hslToSound(myHSL, sound) {
     console.log("Lightness: ", myHSL[2]);
 
     // modifying the frequency using saturation
-    sound.frequency = freq * 1.05946**Math.floor(((myHSL[0]-0.5)*100) / 1);
+    var pitch = freq * ratio**Math.floor(((myHSL[0]-0.5)*20) / 1);
+    sound.frequency = pitch;
 
     // modifying the effects using lightness
     var minEffect = 0.2;    
