@@ -38,15 +38,13 @@
                         var myPalette = convert(output);
                         display(myPalette);
                         toggle_div_fun('changeBox1', myPalette[0]);
-                        toggle_div_fun('changeBox2', myPalette[1]);
-                        toggle_div_fun('changeBox3', myPalette[2]);
-                    }"> 
+                        toggle_div_fun('changeBox2', myPalette[1]);}"> 
                 Convert</button>
 
                 <button class="start" onclick="playAll()">Start</button>
                 <button class="stop" onclick="stopAll()">Stop</button>
                 <a href="interface.html"><button class="back">Back to Menu</button></a>
-
+                <button class="again" onclick="window.location.reload()">Upload Another Image</button>
             </div>
         </div>
 
@@ -56,7 +54,6 @@
             <h2>Dominant Colors: </h2>
             <div id="changeBox1"></div>
             <div id="changeBox2"></div>
-            <div id="changeBox3"></div>
         </div>
         <p style="page-break-after: always;">&nbsp;</p>
     </div>

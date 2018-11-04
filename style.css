@@ -24,12 +24,6 @@
 	float:left;
 }
 
-#changeBox3 {
-	width: 100px;
-	height: 100px;
-	float: left;
-}
-
 .uploadHalf {
 	text-align: center;
 }
@@ -73,6 +67,14 @@
 	font-size: 32px;
 	border-radius: 16px;
 	font-family: 'Amatic SC', cursive;
+}
+
+.again {
+	background-color: darkslategrey;
+	font-size: 32px;
+	border-radius: 16px;
+	font-family: 'Amatic SC', cursive;
+	color: white;
 }
 
 .wordRed {
