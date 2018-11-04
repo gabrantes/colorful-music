@@ -114,6 +114,8 @@ function toggle_div_fun(id, rgb) {
   console.log("toggle_div_fun");
 
       var divElement = document.getElementById(id);
+
+      //hiding the div
     if (divElement.style.display == 'none') {
       if (isConverted && isFileOpened) {
         divElement.style.display = 'block';
@@ -122,10 +124,10 @@ function toggle_div_fun(id, rgb) {
       divElement.style.display = 'none';
     }
 
-    var box = document.getElementById(id);
+    // changing color of the div
     var randR = rgb[0];
     var randG = rgb[1];
     var randB = rgb[2];
-    box.appendChild(document.createTextNode("Dominant Color"));
-    box.style.backgroundColor = "rgb(" + randR + ", " + randG + ", " + randB + ")";
+    divElement.appendChild(document.createTextNode("D"));
+    divElement.style.backgroundColor = "rgb(" + randR + ", " + randG + ", " + randB + ")";
 }

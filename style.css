@@ -12,6 +12,24 @@
 	height: 80%;
 }
 
+#changeBox1 {
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+
+#changeBox2 {
+	width: 100px;
+	height: 100px;
+	float:left;
+}
+
+#changeBox3 {
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+
 .uploadHalf {
 	text-align: center;
 }
@@ -19,6 +37,10 @@
 #output {
 	position: center;
 	height:300px
+}
+
+.colors {
+	text-align: center;
 }
 
 .convert {
@@ -34,7 +56,6 @@
 	background-color: lawngreen;
 	font-size: 32px;
 	border-radius: 16px;
-	float: left;
 	font-family: 'Amatic SC', cursive;
 	color: white;
 }
@@ -43,7 +64,6 @@
 	background-color: tomato;
 	font-size: 32px;
 	border-radius: 16px;
-	float: left;
 	font-family: 'Amatic SC', cursive;
 	color: white;
 }
@@ -52,12 +72,7 @@
 	background-color: lemonchiffon;
 	font-size: 32px;
 	border-radius: 16px;
-	float: right;
 	font-family: 'Amatic SC', cursive;
-}
-
-.uploadedImg {
-
 }
 
 .wordRed {
@@ -80,6 +95,7 @@ h1 {
 h2 {
 	color: black;
 	font-size: 36px;
+	float: left;
 }
 
 hr {
