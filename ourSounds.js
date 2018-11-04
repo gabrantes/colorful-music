@@ -5,7 +5,7 @@ var ratio = 1.05946; //Equal temperament tuning ratio
 var mySound = new Pizzicato.Sound({
     source: 'wave',
     options: {
-        type:  'triangle',
+        type:  'sine',
         frequency: freq,
         release: 0.2
     }
@@ -70,10 +70,12 @@ function hslToSound(myHSL, sound) {
     console.log("Lightness: ", myHSL[2]);
 
     // modifying the frequency using saturation
-    var pitch = freq * ratio ** Math.floor(((myHSL[0]-0.5)*20) / 1);
-    var dichord = logx(ratio, pitch/freq) % 12;
+    var pitch = freq * ratio ** Math.floor(((myHSL[0])*40) / 1);
+    var dichord = Math.floor((logx(ratio, pitch/freq) + 12)% 12); //Assign each pitch a dichord number
+    console.log("dichord: " + dichord);
     if (dichord == 1 || dichord == 3 || dichord == 6 || dichord == 8 || dichord == 10) {
-        sound.frequency = pitch * ratio;
+        sound.frequency = pitch * ratio; //Adjust all dichords to ionian mode
+
     }
     else {
 
