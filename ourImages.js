@@ -1,3 +1,6 @@
+var isConverted = false;
+var isFileOpened = false;
+
 var sound1 = new Pizzicato.Sound({
     source: 'wave',
     options: {
@@ -38,6 +41,7 @@ var openFile = function(file) {
     output.src = dataURL;
   };
   reader.readAsDataURL(input.files[0]);
+  isFileOpened = true;
 };
 
 /**
@@ -66,21 +70,26 @@ function paletteImg(src) {
  * Converts an image file into three sounds
  */
 function convert(src) {
-  var palette = paletteImg(src); // palette is an array of 3 RGB colors
+  if (isFileOpened) {
+    isConverted = true;
+    var palette = paletteImg(src); // palette is an array of 3 RGB colors
 
-  // modifying our three sounds using the 3 RGB colors in the palette array
-  convertFromPalette(palette[0], sound1);
-  convertFromPalette(palette[1], sound2);
-  convertFromPalette(palette[2], sound3);
+    // modifying our three sounds using the 3 RGB colors in the palette array
+    convertFromPalette(palette[0], sound1);
+    convertFromPalette(palette[1], sound2);
+    convertFromPalette(palette[2], sound3);
+  }
 }
 
 /**
  * Plays our three sounds
  */
 function playAll() {
-  sound1.play();
-  sound2.play();
-  sound3.play();
+  if (isConverted && isFileOpened) {
+    sound1.play();
+    sound2.play();
+    sound3.play();
+  }
 }
 
 /**
