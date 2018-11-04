@@ -45,27 +45,27 @@ function main() {
 
     // drawMonaLisa(ctx);
     makeGradients(ctx);
-    canvas.addEventListener("touchstart", function(event){
+    canvas.addEventListener("touchstart",function(event){
         mySound.play();
-        whenMoves.call(this, event);
-        canvas.addEventListener("touchmove", whenMoves, false);
+        whenMovesTouch.call(this, event);
+        canvas.addEventListener("touchmove", whenMovesTouch,false);
     });
     canvas.addEventListener("touchend", function() {
         mySound.stop();
-        this.removeEventListener("touchmove", whenMoves);
+        this.removeEventListener("touchmove", whenMovesTouch);
     });
     canvas.addEventListener("mousedown",function(event){
         mySound.play();
-        whenMoves.call(this, event);
-        canvas.addEventListener("mousemove", whenMoves,false);
+        whenMovesMouse.call(this, event);
+        canvas.addEventListener("mousemove", whenMovesMouse,false);
     });
     canvas.addEventListener("mouseup", function() {
         mySound.stop();
-        this.removeEventListener("mousemove", whenMoves);
+        this.removeEventListener("mousemove", whenMovesMouse);
     });
 }
 
-function whenMoves(event) {
+function whenMovesMouse(event) {
     // Get the coordinates of the click
     var eventLocation = getEventLocation(this,event);
     // Get the data of the pixel according to the location generate by the getEventLocation function
@@ -74,6 +74,35 @@ function whenMoves(event) {
     
     var context = this.getContext('2d');
     var pixelData = context.getImageData(eventLocation.x, eventLocation.y, 1, 1).data; 
+    console.log(pixelData);
+
+    // GABRIEL'S STUFF
+    var color = Color.rgb(pixelData[0], pixelData[1], pixelData[2]);
+    var hsl = color.hslData();
+
+    hslToSound(hsl, mySound);
+
+    // If transparency on the pixel , array = [0,0,0,0]
+    if((pixelData[0] == 0) && (pixelData[1] == 0) && (pixelData[2] == 0) && (pixelData[3] == 0)){
+        console.log('whu');
+        // Do something if the pixel is transparent
+    }
+
+    // Convert it to HEX if you want using the rgbToHex method.
+    // var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
+}
+
+function whenMovesTouch(event) {
+    // Get the coordinates of the click
+    var xCoordinate = event.touches[0].clientX;
+    var yCoordinate = event.touches[0].clientY;
+
+    // Get the data of the pixel according to the location generate by the getEventLocation function
+
+    console.log("x: " + xCoordinate, "y: " + yCoordinate);
+
+    var context = this.getContext('2d');
+    var pixelData = context.getImageData(xCoordinate, yCoordinate, 1, 1).data;
     console.log(pixelData);
 
     // GABRIEL'S STUFF
