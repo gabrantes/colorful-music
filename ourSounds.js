@@ -1,4 +1,6 @@
-var freq = 261.6; // middle C
+//var freq = 261.6; // middle C
+var freq = 440; //A4
+var ratio = 1.05946; //Equal temperament tuning ratio
 
 var mySound = new Pizzicato.Sound({
     source: 'wave',
@@ -59,7 +61,7 @@ function hslToSound(myHSL, sound) {
     console.log("Lightness: ", myHSL[2]);
 
     // modifying the frequency using saturation
-    sound.frequency = freq + (freq * myHSL[0]);
+    sound.frequency = freq * 1.05946**Math.floor(((myHSL[0]-0.5)*100) / 1);
 
     // modifying the effects using lightness
     var minEffect = 0.2;    
