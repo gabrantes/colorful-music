@@ -77,8 +77,8 @@ function whenMovesMouse(event) {
     console.log(pixelData);
 
     // GABRIEL'S STUFF
-    var color = Color.rgb(pixelData[0], pixelData[1], pixelData[2]);
-    var hsl = color.hslData();
+    var color = new Color(pixelData[0], pixelData[1], pixelData[2]);
+    var hsl = color.toHSL();
 
     hslToSound(hsl, mySound);
 
@@ -107,7 +107,7 @@ function whenMovesTouch(event) {
 
     // GABRIEL'S STUFF
     var color = Color.rgb(pixelData[0], pixelData[1], pixelData[2]);
-    var hsl = color.hslData();
+    var hsl = color.toHSL();
 
     hslToSound(hsl, mySound);
 
