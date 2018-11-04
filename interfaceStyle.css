@@ -18,7 +18,7 @@ h2 {
 }
 
 a:visited {
-	color: darkred;
+	color: green;
 }
 
 .firstinst:hover {
@@ -48,10 +48,11 @@ a:visited {
 
 .button {
 	background-color: #f44336;
-	font-size: 18px;
+	font-size: 32px;
 	padding: 16px;
 	border-radius: 8px;
 	border: 2px solid black;
+	font-family: 'Amatic SC', cursive;
 }
 
 .button:hover {

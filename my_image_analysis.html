@@ -12,27 +12,55 @@
     <script src="ourSounds.js"></script>
     <script src="ourColors.js"></script>
     <script src="ourImages.js"></script>
+
 </head>
 
 <body>
-    <h1>PictoChord</h1>
+    <div class="uploadHalf">
+        <h1>PictoChord</h1>
 
-    <input type='file' accept='image/*' onchange='openFile(event)'><br>
+        <div class="openedImg">
+            <input type='file' accept='image/*' onchange='openFile(event)'>
+            <script>var newHeight = output.height / 10; var newWidth = output.width / 10;</script>
 
-    <script>var newHeight = output.height / 10; var newWidth = output.width / 10;</script>
+            <img id='output' class="uploadedImg" style="height:300px">
+        </div>
+        
 
-    <img id='output' style="height:300px">
+    
+
+    <br>
+
+
+    
 
     <p style="page-break-after: always;">&nbsp;</p>
 
-    <button class="button" onclick="convert(output)">Convert</button>
+    <button class="convert" onclick="convert(output)">Convert</button>
 
+    </div>
+   
+
+    <hr>
+
+<div class="">
+    <h2>Dominant Colors</h2>
+
+    <!-- <img id='colorOne' style="height:200px">
+    <img id='colorTwo' style="height:200px">
+    <img id='colorThree' style="height:200px"> -->
+</div>
+    
     <p style="page-break-after: always;">&nbsp;</p>
 
-    <button class="button" onclick="playAll()">Start</button>
+<div class="buttons">
+    <button class="start" onclick="playAll()">Start</button>
 
-    <button class="button" onclick="stopAll()">Stop</button>
+    <button class="stop" onclick="stopAll()">Stop</button>
 
-    <a href="interface.html"><button>Press me to go back.</button></a>
+    <a href="interface.html"><button class="back">Back to Menu</button></a>
+</div>
+    
+
 </body>
 </html>
