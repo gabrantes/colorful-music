@@ -11,6 +11,14 @@ var mySound = new Pizzicato.Sound({
     }
 });
 
+var zeroDichord = [4, 5, 7, 9];
+var twoDichord = [5, 7, 9, 11];
+var fourDichord = [7, 9, 11];
+var fiveDichord = [9, 0, 11];
+var sevenDichord = [11, 0, 2, 4];
+var nineDichord = [0, 2, 4, 5, 7];
+var elevenDichord = [2, 4, 7];
+
 /**
  * This function transposes a sound UP by a minor third
  *
@@ -120,4 +128,12 @@ function hslToSound_harmonic(myHSL, soundArr) {
 
     }
 
+}
+
+function findNearestVal(dichord, arrDichords, arrSize) {
+    for (var i = 0; i < arrSize; ++i) {
+        if (dichord == arrDichords[i]) {
+            return arrDichords[i];
+        }
+    }
 }
