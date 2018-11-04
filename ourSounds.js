@@ -69,8 +69,8 @@ function hslToSound(myHSL, sound) {
     console.log("Saturation: ", myHSL[1]);
     console.log("Lightness: ", myHSL[2]);
 
-    // modifying the frequency using saturation
-    var pitch = freq * ratio ** Math.floor(((myHSL[0])*40) / 1);
+    // modifying the frequency using hue
+    var pitch = freq * ratio ** Math.floor(((myHSL[0])*20) / 1);
     var dichord = Math.floor((logx(ratio, pitch/freq) + 12)% 12); //Assign each pitch a dichord number
     console.log("dichord: " + dichord);
     if (dichord == 1 || dichord == 3 || dichord == 6 || dichord == 8 || dichord == 10) {
@@ -87,7 +87,10 @@ function hslToSound(myHSL, sound) {
     effect.feedback = (1 - myHSL[2]) + minEffect;
     effect.speed = (1 - myHSL[2]) + minEffect;
     effect.depth = (1 - myHSL[2] + minEffect) / 4;
-    // sound.volume = myHSL[2];
+    sound.volume = -2*myHSL[2] + 2;
+    sound.mix = myHSL[1];
+
+
 }
 
 
