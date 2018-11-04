@@ -11,13 +11,6 @@ var mySound = new Pizzicato.Sound({
     }
 });
 
-var zeroDichord = [4, 5, 7, 9];
-var twoDichord = [5, 7, 9, 11];
-var fourDichord = [7, 9, 11];
-var fiveDichord = [9, 0, 11];
-var sevenDichord = [11, 0, 2, 4];
-var nineDichord = [0, 2, 4, 5, 7];
-var elevenDichord = [2, 4, 7];
 
 /**
  * This function transposes a sound UP by a minor third
@@ -102,38 +95,3 @@ function hslToSound(myHSL, sound) {
     sound.mix = myHSL[1];
 }
 
-/**
- * This function alters the sound based on the hsl color input, ensuring that
- * all sounds are harmonically acceptable.
- *
- * @param myHSL An array containing hue, saturation, lightness respectively. [hue, saturation, lightness]
- *              Each of these values must range from 0 to 1
- * @param soundArr The array of the two (diatonic) sounds after they've been passed through the function
- *                 hslToSound, of format [sound1 , sound2]
- */
-function hslToSound_harmonic(myHSL, soundArr) {
-    console.log("Hue: ", myHSL[0]);
-    console.log("Saturation: ", myHSL[1]);
-    console.log("Lightness: ", myHSL[2]);
-
-    // find the bass (the min)
-    if (soundArr[0].frequency > soundArr[1].frequency) {
-        var tmp = soundArr[0];
-        soundArr[0] = soundArr[1];
-        soundArr[1] = soundArr[0];
-    } // now array is in order
-
-    // determine the 3rd note
-    switch(soundArr[0].dichord) {
-
-    }
-
-}
-
-function findNearestVal(dichord, arrDichords, arrSize) {
-    for (var i = 0; i < arrSize; ++i) {
-        if (dichord == arrDichords[i]) {
-            return arrDichords[i];
-        }
-    }
-}
