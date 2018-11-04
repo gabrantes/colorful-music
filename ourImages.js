@@ -120,6 +120,6 @@ function toggle_div_fun(id, rgb) {
   var randR = rgb[0];
   var randG = rgb[1];
   var randB = rgb[2];
-  divElement.appendChild(document.createTextNode(" "));
+  divElement.appendChild(document.createTextNode(""));
   divElement.style.backgroundColor = "rgb(" + randR + ", " + randG + ", " + randB + ")";
 }
