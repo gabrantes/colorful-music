@@ -1,5 +1,6 @@
 h1:hover {
 	color: #ff1a1a; /*this is red*/
+	background-color: violet;
 }
 
 h1 {
@@ -7,35 +8,42 @@ h1 {
 }
 
 h2:hover {
-	color: #e01fe0; /*this is violet*/
+	color: #d641f4; /*this is violet*/
+	background-color: #f4425f;
 }
+
 
 h2 {
 	font-size: 36px;
 }
 
 a:visited {
-	color: purple;
+	color: darkred;
 }
 
 .firstinst:hover {
-	color: #ffa600 /*this is orange*/
+	color: #ffa600; /*this is orange*/
+	background-color: indigo;
 }
 
 .secondinst:hover {
 	color: #ffff1a; /*this is yellow*/
+	background-color: blue;
 }
 
 .thirdinst:hover {
 	color: #00ff00; /*this is green*/
+	background-color: green;
 }
 
 .fourthinst:hover {
 	color: #1a1aff; /*this is blue*/
+	background-color: yellow;
 }
 
 .fifthinst:hover {
 	color: #7700cc; /*this is indigo*/
+	background-color: orange;
 }
 
 .button {
@@ -52,42 +60,47 @@ a:visited {
 
 #maindiv {
 	width: 80%;
-	max-width: 1500px;
+	max-width: 800px;
 	min-width: 400px;
 	border: 10px line black;
 	min-height: 500px;
-	height: 80%;
+	height: 100%;
 	text-align: center;
 }
+.headerdiv {
+	
+}
+
 
 .bodydiv {
-	width: ;
-
+	background-color: white;
 }
 
-.headerdiv {
-
+.instructions {
+	width: 100%;
+	height: 100%;
 }
 
-.option {
-	max-width: 800px;
-	width: 80%;
-	max-height: 800px;
-	height: 80%;
-	padding-left: 5px;
-	border-left: 5px solid #bdc3c7;
-	color: #3498db;
-	letter-spacing: 0.1rem;
-	text-transform: uppercase;
-	border: 5px solid #bdc3c7;
-	margin: 20px;
+.mona {
+	width: 50%;
+	height: 40%;
+	max-height: 120px;
+	max-width: 100px;
+}
+
+.secondHalf {
 	text-align: center;
+}
+li {
+	list-style-image: url('XSNote.jpg');
 }
 
 body {
-	background: white;
+	background-image: url('rainbow.png');
+	background-size: cover;
 	color: black;
-	width: 80%;
+	width: 50%;
 	margin: 10px auto;
+	height: 100%;
 
 }
