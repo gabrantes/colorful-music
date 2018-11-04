@@ -48,8 +48,8 @@ var openFile = function(file) {
  * Given an RGB palette, it modifies the sound object parameter using on our function hslToSound
  */
 function convertFromPalette(palette, sound) {
-  var color = Color.rgb(palette[0], palette[1], palette[2]);
-  var hsl = color.hslData();
+  var color = new Color(palette[0], palette[1], palette[2]);
+  var hsl = color.toHSL();
   hslToSound(hsl, sound);
 }
 
@@ -99,4 +99,19 @@ function stopAll() {
   sound1.stop();
   sound2.stop();
   sound3.stop();
+}
+
+function toggle_div_fun(id) {
+  if (!isConverted && !isFileOpened) {
+
+  }
+  var divElement = document.getElementById(id);
+
+  if (divElement.style.display == 'none') {
+    if (isConverted && isFileOpened) {
+      divElement.style.display = 'block';
+    }    
+  } else {
+    divElement.style.display = 'none';
+  }
 }

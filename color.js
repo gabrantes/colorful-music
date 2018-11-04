@@ -9,7 +9,8 @@ function Color(r, g, b) {
 		} else {
 			var saturation;
 			saturation = (delta / (1 - Math.abs(2*lightness - 1)));
-			saturation /= 100;
+			saturation;
+			return saturation;
 		}
 	}
 
@@ -32,14 +33,14 @@ function Color(r, g, b) {
 	}
 
 	this.toHSL = function() {
-		var cmax = Math.max(r, g, b);
-		var cmin = Math.min(r, g, b);
+		var cmax = Math.max(this.r, this.g, this.b);
+		var cmin = Math.min(this.r, this.g, this.b);
 
 		var delta = cmax - cmin;
 		var lightness = (cmax + cmin) / 2;
-		lightness /= 100;
+		lightness;
 		var saturation = calcSaturation(delta, lightness);
-		var hue = calcHue(r, g, b, cmax, cmin, delta);
+		var hue = calcHue(this.r, this.g, this.b, cmax, cmin, delta);
 
 		var arr = [hue, saturation, lightness];
 		return arr;
