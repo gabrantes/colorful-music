@@ -67,9 +67,11 @@ function setDichords(a, b) {
 function hslToSound_harmonic(soundArr) {
     // find the bass (the min)
     if (soundArr[0].dichord > soundArr[1].dichord) {
+        console.log("swapping soundArr[0] (", soundArr[0].dichord, ") and soundArr[1] (", soundArr[1].dichord, ")");
         var tmp = soundArr[0];
         soundArr[0] = soundArr[1];
-        soundArr[1] = soundArr[0];
+        soundArr[1] = tmp;
+        console.log("finished swapping. soundArr[0] (", soundArr[0].dichord, ") and soundArr[1] (", soundArr[1].dichord, ")");
     } // now array is in order
 
     // determine the 3rd note
@@ -79,7 +81,7 @@ function hslToSound_harmonic(soundArr) {
           switch(findNearestVal(soundArr[1].dichord, zeroDichord, zeroDichord.length)){
               case 4: console.log("case 0, 4"); setDichords(4, 7); break;
               case 5: console.log("case 0, 5"); setDichords(5, 8); break;
-              case 7: console.log("case 0, 7"); setDichords(7, 0); break;
+              case 7: console.log("case 0, 7"); setDichords(7, 4); break;
               case 9: console.log("case 0, 9"); setDichords(9, 5); break;
               default: console.log("case 0, default"); break;
           }
@@ -202,12 +204,25 @@ function hslToSound_harmonic(soundArr) {
 
 function findNearestVal(dichord, arrDichords, arrSize) {
     console.log("findNearestVal(", dichord, ")");
+    var diffArr = [];
     for (var i = 0; i < arrSize; ++i) {
-        if (dichord == arrDichords[i]) {
-            console.log("the found dichord: ",arrDichords[i]);
-            return arrDichords[i];
-        }
+      diffArr.push(Math.abs(dichord - arrDichords[i]));
     }
+
+    console.log(diffArr);
+
+    var minIndex = 0;
+    var minValue = diffArr[0];
+    for (var i = 0; i < arrSize; ++i) {
+      if (diffArr[i] < minValue) {
+        minValue = diffArr[i];
+        minIndex = i;
+      }
+    }
+    console.log("minIndex: ", minIndex);
+    console.log("the nearest dichord: ",arrDichords[minIndex]);
+
+    return arrDichords[minIndex];
     console.log("no found dichord");
     return null;
 }
@@ -265,7 +280,7 @@ function paletteImg(src) {
 function convert(src) {
   if (isFileOpened) {
     console.log("converting...");
-    isConverted = true;
+    
     var palette = paletteImg(src); // palette is an array of 2 RGB colors
 
     // modifying our two sounds using the 3 RGB colors in the palette array
@@ -273,11 +288,14 @@ function convert(src) {
     convertFromPalette(palette[1], sound2);
 
     soundArray.push(sound1);
+    console.log("pushed sound1");
     soundArray.push(sound2);
+    console.log("pushed sound2");
 
     // add the third sound
     hslToSound_harmonic(soundArray);
-
+    isConverted = true;
+    console.log("converted successfully.");
     return palette;
   }
   return null;

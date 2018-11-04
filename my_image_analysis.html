@@ -33,10 +33,9 @@
 
             <div class="buttons">
                 <button class="convert" onclick="
-                    if (!isConverted) {
-                        isConverted = true;
+                    if (!isConverted) {                        
                         var myPalette = convert(output); // get the palette from the image 'output'
-
+                        isConverted = true;
                         // Modify the divs to the three dominant colors and display them
                         toggle_div_fun('changeBox1', myPalette[0]);
                         toggle_div_fun('changeBox2', myPalette[1]);}"> 
