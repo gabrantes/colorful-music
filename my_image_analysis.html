@@ -33,13 +33,14 @@
 
             <div class="buttons">
                 <button class="convert" onclick="
-
-
-                    var myPalette = convert(output);
-                    display(myPalette);
-                    toggle_div_fun('changeBox1', myPalette[0]);
-                    toggle_div_fun('changeBox2', myPalette[1]);
-                    toggle_div_fun('changeBox3', myPalette[2]);"> 
+                    if (!isConverted) {
+                        isConverted = true;
+                        var myPalette = convert(output);
+                        display(myPalette);
+                        toggle_div_fun('changeBox1', myPalette[0]);
+                        toggle_div_fun('changeBox2', myPalette[1]);
+                        toggle_div_fun('changeBox3', myPalette[2]);
+                    }"> 
                 Convert</button>
 
                 <button class="start" onclick="playAll()">Start</button>

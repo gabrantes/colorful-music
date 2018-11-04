@@ -71,6 +71,7 @@ function paletteImg(src) {
  */
 function convert(src) {
   if (isFileOpened) {
+    console.log("converting...");
     isConverted = true;
     var palette = paletteImg(src); // palette is an array of 3 RGB colors
 
@@ -113,21 +114,12 @@ function display(palette) {
 function toggle_div_fun(id, rgb) {
   console.log("toggle_div_fun");
 
-      var divElement = document.getElementById(id);
+  var divElement = document.getElementById(id);
 
-      //hiding the div
-    if (divElement.style.display == 'none') {
-      if (isConverted && isFileOpened) {
-        divElement.style.display = 'block';
-      }    
-    } else {
-      divElement.style.display = 'none';
-    }
-
-    // changing color of the div
-    var randR = rgb[0];
-    var randG = rgb[1];
-    var randB = rgb[2];
-    divElement.appendChild(document.createTextNode("D"));
-    divElement.style.backgroundColor = "rgb(" + randR + ", " + randG + ", " + randB + ")";
+  // changing color of the div
+  var randR = rgb[0];
+  var randG = rgb[1];
+  var randB = rgb[2];
+  divElement.appendChild(document.createTextNode("D"));
+  divElement.style.backgroundColor = "rgb(" + randR + ", " + randG + ", " + randB + ")";
 }
