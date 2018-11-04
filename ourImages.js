@@ -27,7 +27,27 @@ var sound2 = new Pizzicato.Sound({
     }
 });
 
+var sound3 = new Pizzicato.Sound({
+    source: 'wave',
+    options: {
+      type: 'triangle',
+      frequency: freq,
+      release: 0.2
+    }
+});
+
 var soundArray = [sound1, sound2];
+
+/**
+ * Converts a dichord to a frequency
+ *
+ * @param dichord
+ * @return The frequency equivalent of the given dichord
+ */
+function dichordToFreq(dichord) {
+  return 440 * (1.05946 ** dichord);
+}
+
 /**
  * This function alters the sound based on the hsl color input, ensuring that
  * all sounds are harmonically acceptable.
