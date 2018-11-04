@@ -19,6 +19,8 @@ var sound2 = new Pizzicato.Sound({
     }
 });
 
+var soundArray = [sound1, sound2];
+
 
 /**
  * Opens a file and saves the element into a variable called output
@@ -41,11 +43,11 @@ var openFile = function(file) {
 /**
  * Given an RGB palette, it modifies the sound object parameter using on our function hslToSound
  *
- * @param palette The RGB palette, of format [r, g, b]
+ * @param rgb The RGB array, of format [r, g, b]
  * @param sound The sound we want to modify using the provided palette
  */
-function convertFromPalette(palette, sound) {
-  var color = new Color(palette[0], palette[1]);
+function convertFromPalette(rgb, sound) {
+  var color = new Color(rgb[0], rgb[1], rgb[2]);
   var hsl = color.toHSL();
   hslToSound(hsl, sound);
 }
@@ -55,7 +57,7 @@ function convertFromPalette(palette, sound) {
  * Notice it is returning in RGB format, NOT HSL.
  *
  * @param src The image file
- * @return An array of the three colors, in RGB format: [ {r, g, b}, {r, g, b}, {r, g, b} ]
+ * @return An array of the two colors, in RGB format: [ {r, g, b}, {r, g, b} ]
  */
 function paletteImg(src) {
   var colorThief = new ColorThief();
@@ -74,11 +76,16 @@ function convert(src) {
   if (isFileOpened) {
     console.log("converting...");
     isConverted = true;
-    var palette = paletteImg(src); // palette is an array of 3 RGB colors
+    var palette = paletteImg(src); // palette is an array of 2 RGB colors
 
-    // modifying our three sounds using the 3 RGB colors in the palette array
+    // modifying our two sounds using the 3 RGB colors in the palette array
     convertFromPalette(palette[0], sound1);
     convertFromPalette(palette[1], sound2);
+
+    // determine the third sound
+
+    // add the third sound to the soundArray
+    soundArray.push(/* the third sound */); // soundArray now contains 3 sounds
 
     return palette;
   }
@@ -86,27 +93,29 @@ function convert(src) {
 }
 
 /**
- * Plays our three sounds
+ * Plays our soundArray
  */
 function playAll() {
   if (isConverted && isFileOpened) {
-    sound1.play();
-    sound2.play();
+    for (var i = 0; i < 3; ++i) {
+      soundArray[i].play();
+    }
   }
 }
 
 /**
- * Stops our three sounds
+ * Stops our soundArray
  */
 function stopAll() {
-  sound1.stop();
-  sound2.stop();
+  for (var i = 0; i < 3; ++i) {
+    soundArray[i].stop();
+  }
 }
 
 /**
  * Prints out the palette array to the console for debugging purposes.
  *
- * @param palette The palette array.
+ * @param palette The palette array, an array of two RGB colors
  */
 function display(palette) {
   console.log("palette[0] = ", palette[0]);
