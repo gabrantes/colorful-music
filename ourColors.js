@@ -106,7 +106,7 @@ function whenMovesTouch(event) {
     console.log(pixelData);
 
     // GABRIEL'S STUFF
-    var color = Color(pixelData[0], pixelData[1], pixelData[2]);
+    var color = new Color(pixelData[0], pixelData[1], pixelData[2]);
     var hsl = color.toHSL();
 
     hslToSound(hsl, mySound);

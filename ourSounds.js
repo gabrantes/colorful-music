@@ -49,9 +49,18 @@ var effect = new Pizzicato.Effects.Flanger({
 mySound.addEffect(effect);
 
 /**
+ * This function calculates a logarithm
+ * @param base
+ * @param arg
+ * @returns {number}
+ */
+function logx(base, arg) {
+    return Math.log(arg)/Math.log(base);
+}
+/**
  * This function alters the sound based on the hsl color input
  *
- * @param myHSL An array containing hue, saturation, lightness respectively. 
+ * @param myHSL An array containing hue, saturation, lightness respectively.
  *              Each of these values must range from 0 to 1
  * @param sound The sound object to be altered
  */
@@ -61,13 +70,22 @@ function hslToSound(myHSL, sound) {
     console.log("Lightness: ", myHSL[2]);
 
     // modifying the frequency using saturation
-    var pitch = freq * ratio**Math.floor(((myHSL[0]-0.5)*20) / 1);
-    sound.frequency = pitch;
+    var pitch = freq * ratio ** Math.floor(((myHSL[0]-0.5)*20) / 1);
+    var dichord = logx(ratio, pitch/freq) % 12;
+    if (dichord == 1 || dichord == 3 || dichord == 6 || dichord == 8 || dichord == 10) {
+        sound.frequency = pitch * ratio;
+    }
+    else {
+
+        sound.frequency = pitch;
+    }
 
     // modifying the effects using lightness
-    var minEffect = 0.2;    
+    var minEffect = 0.2;
     effect.feedback = (1 - myHSL[2]) + minEffect;
     effect.speed = (1 - myHSL[2]) + minEffect;
     effect.depth = (1 - myHSL[2] + minEffect) / 4;
     // sound.volume = myHSL[2];
 }
+
+
