@@ -21,7 +21,6 @@
 
         <div class="openedImg">
             <input type='file' accept='image/*' onchange='openFile(event)'>
-            <script>var newHeight = output.height / 10; var newWidth = output.width / 10;</script>
 
             <img id='output' class="uploadedImg" style="height:300px">
         </div>
@@ -36,7 +35,9 @@
 
     <p style="page-break-after: always;">&nbsp;</p>
 
-    <button class="convert" onclick="convert(output)">Convert</button>
+    <button class="convert" onclick="convert(output); toggle_div_fun('sectiontohide');">Convert</button>
+
+    <div id="sectiontohide">hide me</div>
 
     </div>
    
