@@ -3,6 +3,11 @@ function Color(r, g, b) {
 	this.g = g/255;
 	this.b = b/255;
 
+	/**
+	 * Calculates the saturation
+	 *
+	 * @return the saturation value, ranging from 0 to 1
+	 */
 	function calcSaturation(delta, lightness) {
 		if (delta == 0) {
 			return 0;
@@ -14,6 +19,11 @@ function Color(r, g, b) {
 		}
 	}
 
+	/**
+	 * Calculates the hue
+	 *
+	 * @return the hue value, ranging from 0 to 1
+	 */
 	function calcHue(r, g, b, cmax, cmin, delta) {
 		if (delta == 0) {
 			return 0;
@@ -32,6 +42,11 @@ function Color(r, g, b) {
 		return hue;
 	}
 
+	/**
+	 * Uses the RGB values stored in the object to calculate the HSL conversion
+	 *
+	 * @return an array for the HSL values, of format [hue, saturation, lightness]
+	 */
 	this.toHSL = function() {
 		var cmax = Math.max(this.r, this.g, this.b);
 		var cmin = Math.min(this.r, this.g, this.b);
