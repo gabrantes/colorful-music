@@ -78,7 +78,10 @@ function convert(src) {
     convertFromPalette(palette[0], sound1);
     convertFromPalette(palette[1], sound2);
     convertFromPalette(palette[2], sound3);
+
+    return palette;
   }
+  return null;
 }
 
 /**
@@ -101,17 +104,28 @@ function stopAll() {
   sound3.stop();
 }
 
-function toggle_div_fun(id) {
-  if (!isConverted && !isFileOpened) {
+function display(palette) {
+  console.log("palette[0] = ", palette[0]);
+  console.log("palette[1] = ", palette[1]);
+  console.log("palette[2] = " , palette[2]);
+}
 
-  }
-  var divElement = document.getElementById(id);
+function toggle_div_fun(id, rgb) {
+  console.log("toggle_div_fun");
 
-  if (divElement.style.display == 'none') {
-    if (isConverted && isFileOpened) {
-      divElement.style.display = 'block';
-    }    
-  } else {
-    divElement.style.display = 'none';
-  }
+      var divElement = document.getElementById(id);
+    if (divElement.style.display == 'none') {
+      if (isConverted && isFileOpened) {
+        divElement.style.display = 'block';
+      }    
+    } else {
+      divElement.style.display = 'none';
+    }
+
+    var box = document.getElementById(id);
+    var randR = rgb[0];
+    var randG = rgb[1];
+    var randB = rgb[2];
+    box.appendChild(document.createTextNode("Dominant Color"));
+    box.style.backgroundColor = "rgb(" + randR + ", " + randG + ", " + randB + ")";
 }
