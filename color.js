@@ -10,6 +10,7 @@ function Color(r, g, b) {
 			var saturation;
 			saturation = (delta / (1 - Math.abs(2*lightness - 1)));
 			saturation /= 100;
+			return saturation;
 		}
 	}
 
