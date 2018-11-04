@@ -4,6 +4,7 @@
     <title>Image to Music</title>
 
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet">
     <script src="jquery.js"></script>
     <script src="quantize.js"></script>
     <script src="color-thief.js"></script>
@@ -16,51 +17,35 @@
 </head>
 
 <body>
-    <div class="uploadHalf">
-        <h1>PictoChord</h1>
-
-        <div class="openedImg">
-            <input type='file' accept='image/*' onchange='openFile(event)'>
-            <script>var newHeight = output.height / 10; var newWidth = output.width / 10;</script>
-
-            <img id='output' class="uploadedImg" style="height:300px">
+    <div id="fulldiv">
+        <div class="uploadHalf">
+            <div>
+                <h1>
+                    <span class="wordRed">Pic</span>
+                    <span class="wordGreen">to</span>
+                    <span class="wordBlue">Chord</span>
+                </h1>
+                <input type='file' accept='image/*' onchange='openFile(event)'>
+                <script>var newHeight = output.height / 10; var newWidth = output.width / 10;</script>
+                <img id='output' class="uploadedImg" > 
+            </div>
+        <p style="page-break-after: always;">&nbsp;</p>
+        <button class="convert" onclick="convert(output)">Convert</button>
         </div>
-        
+        <hr>
+        <div class="">
+            <h2>Dominant Colors:</h2>
 
-    
-
-    <br>
-
-
-    
-
-    <p style="page-break-after: always;">&nbsp;</p>
-
-    <button class="convert" onclick="convert(output)">Convert</button>
-
+            <!-- <img id='colorOne' style="height:200px">
+            <img id='colorTwo' style="height:200px">
+            <img id='colorThree' style="height:200px"> -->
+        </div>
+        <p style="page-break-after: always;">&nbsp;</p>
+        <div class="buttons">
+            <button class="start" onclick="playAll()">Start</button>
+            <button class="stop" onclick="stopAll()">Stop</button>
+            <a href="interface.html"><button class="back">Back to Menu</button></a>
+        </div>
     </div>
-   
-
-    <hr>
-
-<div class="">
-    <h2>Dominant Colors</h2>
-
-    <!-- <img id='colorOne' style="height:200px">
-    <img id='colorTwo' style="height:200px">
-    <img id='colorThree' style="height:200px"> -->
-</div>
-    
-    <p style="page-break-after: always;">&nbsp;</p>
-
-<div class="buttons">
-    <button class="start" onclick="playAll()">Start</button>
-
-    <button class="stop" onclick="stopAll()">Stop</button>
-
-    <a href="interface.html"><button class="back">Back to Menu</button></a>
-</div>
-    
-
 </body>
 </html>

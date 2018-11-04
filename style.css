@@ -6,10 +6,28 @@
     margin-top: -8px;
 }
 
+#fulldiv {
+	margin: 20px auto;
+	width: 100%;
+	height: 80%;
+}
+
+.uploadHalf {
+	text-align: center;
+}
+
+#output {
+	position: center;
+	height:300px
+}
+
 .convert {
 	border-radius: 16px;
 	font-size: 36px;
-
+	background-color: blue;
+	text-align: center;
+	font-family: 'Amatic SC', cursive;
+	color: white;
 }
 
 .start {
@@ -17,6 +35,8 @@
 	font-size: 32px;
 	border-radius: 16px;
 	float: left;
+	font-family: 'Amatic SC', cursive;
+	color: white;
 }
 
 .stop {
@@ -24,6 +44,8 @@
 	font-size: 32px;
 	border-radius: 16px;
 	float: left;
+	font-family: 'Amatic SC', cursive;
+	color: white;
 }
 
 .back {
@@ -31,18 +53,43 @@
 	font-size: 32px;
 	border-radius: 16px;
 	float: right;
+	font-family: 'Amatic SC', cursive;
 }
 
 .uploadedImg {
-	
+
+}
+
+.wordRed {
+	color: red;
+}
+
+.wordGreen {
+	color: green;
+}
+
+.wordBlue {
+	color: blue;
 }
 
 h1 {
 	text-align: center;
+	font-size: 48px;
+}
+
+h2 {
+	color: black;
+	font-size: 36px;
 }
 
 hr {
-	background-color: #fff;
-	border-top: 2px dotted #8c8b8b;
+	background-color: black;
+	border-top: 3px dotted white;
+}
+
+body {
+	background-color: lavender;
+	font-family: 'Amatic SC', cursive;
+	font-weight: bold;
 }
 
