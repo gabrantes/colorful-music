@@ -29,7 +29,9 @@ var sound3 = new Pizzicato.Sound({
 });
 
 /**
- *  Opens a file and saves the element into a variable called output
+ * Opens a file and saves the element into a variable called output
+ *
+ * @param file The file we want to open
  */
 var openFile = function(file) {
   var input = file.target;
@@ -46,6 +48,9 @@ var openFile = function(file) {
 
 /**
  * Given an RGB palette, it modifies the sound object parameter using on our function hslToSound
+ *
+ * @param palette The RGB palette, of format [r, g, b]
+ * @param sound The sound we want to modify using the provided palette
  */
 function convertFromPalette(palette, sound) {
   var color = new Color(palette[0], palette[1], palette[2]);
@@ -57,6 +62,7 @@ function convertFromPalette(palette, sound) {
  * Converts an image file into a palette of its three most dominant colors
  * Notice it is returning in RGB format, NOT HSL.
  *
+ * @param src The image file
  * @return An array of the three colors, in RGB format: [ {r, g, b}, {r, g, b}, {r, g, b} ]
  */
 function paletteImg(src) {
@@ -68,6 +74,9 @@ function paletteImg(src) {
 
 /**
  * Converts an image file into three sounds
+ *
+ * @param src The image file
+ * @return The palette generated from the image file
  */
 function convert(src) {
   if (isFileOpened) {
@@ -105,12 +114,24 @@ function stopAll() {
   sound3.stop();
 }
 
+/**
+ * Prints out the palette array to the console for debugging purposes.
+ *
+ * @param palette The palette array.
+ */
 function display(palette) {
   console.log("palette[0] = ", palette[0]);
   console.log("palette[1] = ", palette[1]);
   console.log("palette[2] = " , palette[2]);
 }
 
+/**
+ * This function takes a div element and applies a background color to it using the 
+ * suplied rgb array
+ *
+ * @param id The id of the div element we want to modify
+ * @param rgb The RGB array, of format [r, g, b]
+ */
 function toggle_div_fun(id, rgb) {
   console.log("toggle_div_fun");
 
